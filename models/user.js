@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const jwr = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.method.generateJWT = function () {
+userSchema.methods.generateJWT = function () {
   return jwt.sign(
     {
       _id: this._id,
